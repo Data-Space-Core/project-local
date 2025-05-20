@@ -1,0 +1,31 @@
+services:
+  provide-user-interface:
+    container_name: provide-user-interface
+    image: ghcr.io/data-space-core/provide-user-interface/stage:latest
+    command: python manage.py runserver 0.0.0.0:8000
+    platform: linux/amd64
+    volumes:
+      - .env:/app/.env
+    ports:
+      - "8000:8000"
+    networks:
+      - local
+
+  consume-user-interface:
+    container_name: consume-user-interface
+    image: ghcr.io/data-space-core/consume-user-interface-2/stage:latest
+    command: python manage.py runserver 0.0.0.0:8000
+    platform: linux/amd64
+    volumes:
+      - .env:/app/.env
+    ports:
+      - "8001:8000"
+    networks:
+      - local
+
+volumes:
+  connector-datab: {}
+
+networks:
+  local:
+    driver: bridge
