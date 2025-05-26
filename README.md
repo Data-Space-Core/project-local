@@ -59,6 +59,25 @@ This will:
 - Run the **Provide UI** on [http://localhost:8000](http://localhost:8000)
 - Run the **Consume UI** on [http://localhost:8001](http://localhost:8001)
 
+### 🔧 Running Migrations for Provide UI
+
+In some cases, you may need to manually apply database migrations inside the `provide-user-interface` container. To do this:
+
+```bash
+docker exec -it provide-user-interface python manage.py migrate
+```
+
+
+Start both UI services:
+
+```bash
+docker-compose up
+```
+
+This will:
+- Run the **Provide UI** on [http://localhost:8000](http://localhost:8000)
+- Run the **Consume UI** on [http://localhost:8001](http://localhost:8001)
+
 ## 📦 Docker Images
 
 - `ghcr.io/data-space-core/provide-user-interface/stage:latest`
