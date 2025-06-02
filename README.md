@@ -71,7 +71,9 @@ docker exec -it provide-user-interface python manage.py migrate
 Start both UI services:
 
 ```bash
-docker-compose up
+docker-compose pull
+
+docker-compose up --build
 ```
 
 This will:
